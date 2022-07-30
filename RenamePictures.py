@@ -40,9 +40,8 @@ class BatchRename:
         startnum = 0  # starts with 0
         nowtime = int(time.strftime("%m%d", time.localtime()))  # Acquire the time now
 
-
         if input_args.random:
-            upperlimit = 10**input_args.length
+            upperlimit = 10 ** input_args.length
             print("Random file name with length set to {}.".format(input_args.length))
         else:
             print("Using today's date {} to rename  and seed is set to {}, ".format(nowtime, input_args.seed), end='')
@@ -59,8 +58,9 @@ class BatchRename:
                 i = random.randint(0, upperlimit)
             ids = input_args.identify
 
-            if item.endswith('.jpg') or item.endswith('.JPG') or item.endswith('.JPEG') or item.endswith('.jpeg')\
-                    or item.endswith('.jfif') or item.endswith('.JFIF'):
+            if item.endswith('.jpg') or item.endswith('.JPG') or item.endswith('.JPEG') or item.endswith('.jpeg') \
+                    or item.endswith('.jfif') or item.endswith('.JFIF') or item.endswith('.webp') or item.endswith(
+                '.WEBP'):
                 src = os.path.join(os.path.abspath(self.path), item)
                 dst = os.path.join(os.path.abspath(self.path),
                                    ids + format(str(i), '0>{}s'.format(input_args.length)) + '.jpg')
@@ -72,7 +72,7 @@ class BatchRename:
                     self.converted += 1
                 except:
                     continue
-            if item.endswith('.bmp'):
+            if item.endswith('.bmp') or item.endswith('.BMP'):
                 src = os.path.join(os.path.abspath(self.path), item)
                 dst = os.path.join(os.path.abspath(self.path),
                                    ids + format(str(i), '0>{}s'.format(input_args.length)) + '.bmp')
@@ -84,7 +84,7 @@ class BatchRename:
                     self.converted += 1
                 except:
                     continue
-            if item.endswith('.png'):
+            if item.endswith('.png') or item.endswith('.PNG'):
                 src = os.path.join(os.path.abspath(self.path), item)
                 dst = os.path.join(os.path.abspath(self.path),
                                    ids + format(str(i), '0>{}s'.format(input_args.length)) + '.png')
